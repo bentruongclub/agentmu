@@ -1,0 +1,27 @@
+Subject: 15 min favor — try my open-source agent (no API key for step 1)
+
+Hey —
+
+I'm building AgentMu, a small local AI coding agent (open source). I need a
+"second user" who isn't me to follow the docs once and tell me what breaks.
+
+No API key needed for Phase 1 (~10–15 min).
+
+Steps:
+1) https://github.com/bentruongclub/agentmu
+2) Open SECOND_USER.md → Role B
+3) Run the Phase 1 commands (clone, npm install, doctor, eval, test)
+4) Reply with the 5 feedback answers at the bottom of that section
+
+Please don't message me for help until you've been stuck 15+ minutes —
+I want the real first-time experience.
+
+Thanks a lot
+— Ben
+
+---
+Shorter (chat/SMS):
+
+Could you try this for ~15 min? No API key for the first part.
+https://github.com/bentruongclub/agentmu → open SECOND_USER.md (Role B)
+Phase 1 only, then paste the 5 feedback answers. Don't ask me until 15 min stuck.

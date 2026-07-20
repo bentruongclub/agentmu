@@ -1,11 +1,15 @@
 # Week 4 — Second-user playbook
 
-Goal: someone who is **not you** can clone/copy AgentMu, verify it offline, then run a live prompt — **using only this repo’s docs**.
+Goal: someone who is **not the author** can clone AgentMu from GitHub, verify it offline, then (optionally) run a live prompt — **using only this repo’s docs**.
+
+**Public repo:** https://github.com/bentruongclub/agentmu  
 
 ## Why this week matters
 
 Builder’s Scorecard **#15 Second independent user** and **#2 Others integrate without DMing you**.  
-If only you can run it, it is still a personal tool — not infrastructure.
+If only the author can run it, it is still a personal tool — not infrastructure.
+
+**Verified (2026-07-21):** fresh `git clone` + Phase 1 passes offline (doctor OK, eval 5/5, 40 tests).
 
 ---
 
@@ -14,36 +18,45 @@ If only you can run it, it is still a personal tool — not infrastructure.
 ### Before you invite them
 
 ```bash
-cd /path/to/AgentMu
+cd agentmu   # your clone
+git pull
 npm test
 npm run build
 npx tsx src/index.ts eval
-npx tsx src/index.ts doctor          # should Overall: OK without their keys
+npx tsx src/index.ts doctor   # Overall: OK without keys
 ```
 
-Send them **only**:
+### What to send (copy-paste)
 
-1. How to get the code (zip, git, USB, Tailscale path — whatever you use)
-2. Link or path to this file: `SECOND_USER.md`
-3. “Start at **Role B**. Don’t ping me until you finish the checklist or get stuck 15+ minutes.”
+Use the message in [docs/INVITE_SECOND_USER.txt](./docs/INVITE_SECOND_USER.txt) — or this short form:
+
+> Hey — could you try my open-source local AI agent harness for ~15 min?  
+> **No API key needed** for the first part.  
+>  
+> 1. https://github.com/bentruongclub/agentmu  
+> 2. Open **SECOND_USER.md** → section **Role B**  
+> 3. Do Phase 1 only; paste back the 5 feedback answers at the bottom  
+>  
+> Don’t ask me until you’re stuck 15+ minutes. Thanks!
 
 ### After they finish
 
-1. Collect their notes (what was confusing, exact error text)
-2. Fix friction in README / doctor / scripts (small PR or commit)
-3. Update [SCORECARD.md](./SCORECARD.md) if scores changed
-4. Thank them — second users are rare and valuable
+1. Collect their notes (template at end of Role B)  
+2. File issues / fix friction  
+3. If Phase 1 succeeded **without** host help → set SCORECARD.md **#15 → 2** and note the date  
+4. Thank them  
 
 ---
 
 ## Role B — Guest (second user)
 
-**Requirements:** Node.js **20+**, network for `npm install` (and later for live model).
+**Requirements:** Node.js **20+** (`node -v`), network for `npm install`.
 
-### Phase 1 — Offline (no API key, ~10 minutes)
+### Phase 1 — Offline (no API key, ~10–15 minutes)
 
 ```bash
-cd AgentMu          # or wherever you unpacked the project
+git clone https://github.com/bentruongclub/agentmu.git
+cd agentmu
 npm install
 npm run build
 
@@ -56,86 +69,66 @@ npm test
 
 | Expect | If not |
 |--------|--------|
-| `doctor` → **Overall: OK** (credentials may show **!** warn) | Note the ✗ line |
+| `doctor` → **Overall: OK** (credentials may show **!** warn) | Copy the ✗ line |
 | `eval` → **Passed 5/5** | Paste full output |
-| `skills` lists `hello-artifact` | Check `skills/` exists |
-| `npm test` all pass | Paste first failure |
+| `skills` lists `hello-artifact` | Say what you see |
+| `npm test` → all pass | Paste first failure |
 
-You have **already succeeded offline** if eval + tests pass. Live chat is Phase 2.
+**Phase 1 success** = eval + tests pass. You do **not** need xAI login for that.
 
-### Phase 2 — Live model (needs your own subscription/key)
+### Phase 2 — Live model (optional; your own key/subscription)
 
-**Option A — browser login**
+Only if you want to talk to a real model:
 
 ```bash
+# Option A
 npx tsx src/index.ts login
-npx tsx src/index.ts whoami
+
+# Option B
+cp .env.example .env
+# set XAI_API_KEY=... from https://console.x.ai
+
+npx tsx src/index.ts doctor --strict
 npx tsx src/index.ts run "Reply in one sentence: who are you?"
 ```
 
-**Option B — API key**
-
-```bash
-cp .env.example .env
-# edit .env → XAI_API_KEY=... from https://console.x.ai
-npx tsx src/index.ts doctor --strict
-npx tsx src/index.ts run "List files in the workspace root with list_dir if needed"
-```
-
-| Expect | If not |
-|--------|--------|
-| `run` prints a short reply | Auth error → re-check login/key |
-| `sessions/*.json` and `*.events.jsonl` appear | Say so |
-
-Optional:
+Optional chat:
 
 ```bash
 npx tsx src/index.ts chat
-# /whoami  /skills  /mode safe  /quit
+# try: /whoami  /skills  /mode safe  /quit
 ```
 
 ### Phase 3 — Feedback (send to host)
 
-Copy-paste answers:
-
-1. OS + Node version (`node -v`)
-2. Time to finish Phase 1 (minutes)
-3. Anything unclear in README?
-4. Exact error text (if any)
-5. Did you need to ask the host anything? What?
+1. OS + `node -v`  
+2. Minutes for Phase 1  
+3. Anything unclear in README / this file?  
+4. Exact error text (if any)  
+5. Did you need to ask the host anything? What?  
 
 ---
 
-## Optional: put `agentmu` on PATH
+## Optional: `agentmu` on PATH
 
 ```bash
-cd AgentMu
-npm run build
-npm link          # needs write access to global npm prefix
+cd agentmu && npm run build && npm link
 agentmu doctor
 agentmu eval
 ```
 
-Or without global link:
-
-```bash
-alias agentmu='npx tsx /absolute/path/to/AgentMu/src/index.ts'
-```
-
 ---
 
-## Host: friction log template
+## Host: friction log
 
-| # | Symptom | Root cause | Fix committed? |
-|---|---------|------------|----------------|
+| # | Symptom | Root cause | Fix / issue |
+|---|---------|------------|-------------|
 | 1 | | | |
 | 2 | | | |
 
----
-
-## Success criteria (Week 4 done)
+## Success criteria
 
 - [ ] Guest completed Phase 1 without host help  
-- [ ] Guest completed Phase 2 **or** documented auth blocker (tier/key)  
-- [ ] At least one friction item fixed in repo  
-- [ ] SCORECARD.md updated with post–Week-4 scores  
+- [ ] Guest completed Phase 2 **or** documented auth blocker  
+- [ ] Friction fixed or filed  
+- [ ] SCORECARD.md #15 → 2 after real guest Phase 1 success  

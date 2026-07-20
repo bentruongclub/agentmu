@@ -10,7 +10,8 @@ Local open-source **multi-tool agent harness** (Grok / SpaceXAI): code tools, we
 
 | Doc | Purpose |
 |-----|---------|
-| [SECOND_USER.md](./SECOND_USER.md) | **Week 4** — hand this to a friend |
+| [SECOND_USER.md](./SECOND_USER.md) | **Second user** — hand this to a friend |
+| [docs/INVITE_SECOND_USER.txt](./docs/INVITE_SECOND_USER.txt) | Ready-to-send invite text |
 | [SCORECARD.md](./SCORECARD.md) | Live 0–40 score vs infrastructure criteria |
 | [SECURITY.md](./SECURITY.md) | Vulnerability reporting (private) |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | Dev setup + PR ground rules |
