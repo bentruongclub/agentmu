@@ -1,6 +1,10 @@
 # AgentMu · Artifact
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 Local open-source **multi-tool agent harness** (Grok / SpaceXAI): code tools, web search, X search, image generation — on your machine.
+
+**Repo:** https://github.com/bentruongclub/agentmu
 
 **v0.5** — Builder’s Scorecard track (permissions, journal, skills, doctor, offline eval, second-user playbook).
 

@@ -27,6 +27,14 @@
     "artifact"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bentruongclub/agentmu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bentruongclub/agentmu/issues"
+  },
+  "homepage": "https://github.com/bentruongclub/agentmu#readme",
   "dependencies": {
     "openai": "^5.12.2"
   },
