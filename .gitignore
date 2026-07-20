@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+.env.local
+sessions/*
+!sessions/.gitkeep
+.agentmu/
+# never commit OAuth tokens
+auth.json
+*.log
+.DS_Store

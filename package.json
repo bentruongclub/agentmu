@@ -1,0 +1,38 @@
+{
+  "name": "agentmu",
+  "version": "0.5.1",
+  "description": "AgentMu — local agent harness. Permissions, journal, skills, doctor, eval, second-user playbook.",
+  "type": "module",
+  "bin": {
+    "agentmu": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "agentmu": "tsx src/index.ts",
+    "test": "tsx --test test/**/*.test.ts",
+    "eval": "tsx src/index.ts eval",
+    "doctor": "tsx src/index.ts doctor",
+    "prepare": "tsc 2>/dev/null || true"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "agent",
+    "grok",
+    "xai",
+    "agentmu",
+    "artifact"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^5.12.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
