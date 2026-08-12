@@ -34,3 +34,13 @@ agentmu skills
 ```
 
 Skills are injected into the system prompt (budgeted) on every new agent run.
+
+## Catalog
+
+| Skill | Description | Canonical repo |
+|-------|-------------|----------------|
+| `hello-artifact` | Quick AgentMu smoke check / "hello artifact" greeting | (local) `skills/hello-artifact.md` |
+| `fix-evaluate-loop` | Fix → evaluate → repeat until the task is actually done | https://github.com/bentruongclub/fix-evaluate-loop |
+| `agent-reality-check` | Anti-hallucination pack: reality-check + science audit | https://github.com/bentruongclub/agent-reality-check |
+
+Pointer skills above link out for install/clone; they do not vendor the full skill trees.
