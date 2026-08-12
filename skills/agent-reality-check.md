@@ -22,17 +22,19 @@ https://github.com/bentruongclub/agent-reality-check
 - `SKILLS/reality-check/SKILL.md`
 - `SKILLS/science/SKILL.md`
 
-See also `WORKFLOW.md` and `EXAMPLE_AUDIT.md` in that repo.
+See also `WORKFLOW.md`, `EXAMPLES.md`, and `EXAMPLE_AUDIT.md` in that repo.
 
 ## Install
-
-Clone the pack, then run `install.sh` once it lands — or point at `SKILLS/` directly:
 
 ```bash
 git clone https://github.com/bentruongclub/agent-reality-check.git
 cd agent-reality-check
-# Prefer when available:
-# chmod +x install.sh && ./install.sh
-# Or copy/symlink SKILLS/reality-check and SKILLS/science into your agent skills dir
-# (e.g. ~/.agentmu/skills/ or ~/.hermes/skills/)
+chmod +x install.sh
+./install.sh                # → ~/.grok/skills/{reality-check,science}
+# ./install.sh --target cursor
+# ./install.sh --target project
+# ./install.sh --target hermes
+# ./install.sh --target all
 ```
+
+Or copy/symlink `SKILLS/reality-check` and `SKILLS/science` into your agent skills dir (e.g. `~/.agentmu/skills/` or `~/.hermes/skills/`).
